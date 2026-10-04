@@ -4,7 +4,7 @@ A classic Snake game recreated entirely with ASCII art — including the game it
 
 ## 🎮 Play
 
-[▶️ Play ASCII Snake](./index.html)
+[▶️ Play ASCII Snake](https://explojoao.github.io/ASCII-snake-/)
 
 ## 🕹️ Controls
 
