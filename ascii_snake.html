@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ASCII Art Snake Game</title>
+    <style>
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            touch-action: none;
+        }
+        #g {
+            font-family: monospace;
+            font-size: 25px;
+            white-space: pre;
+            line-height: 1;
+        }
+    </style>
+</head>
+<body>
+    <pre id="g"></pre>
+
+    <script>
+                /*      _    _      */
+                 /*    / \  / \    */
+                  /*   |o|  |o|   */
+                   /*  \ /  \ /  */
+                    /*  \    /  */
+                     /*  ----  */
+                      /*   |  */
+                       /*  | */
+                        let w=20,
+                           h=15,s=[
+                              {x:10,y:
+                                 7}],d={
+                                   x:1,y:0}
+                                     ,f={x:5,
+                                      y:5},c=
+                                       0;
+                                        setInterval
+                                       (()=>{
+                                      let H={
+                                    x:s[0]
+                                 .x+d.x,y
+                              :s[0].y
+                           +d.y};if
+                        (H.x<0||
+                      H.x>=w||
+                    H.y<0||H
+                  .y>=h||s
+                .some(z=>
+              z.x===H.x
+             &&z.y===
+             H.y)){s=
+              [{x:10,y
+                :7}];d=
+                  {x:1,y:
+                    0};c=0;
+                      }else{s
+                         .unshift(
+                            H);if(H.
+                              x===f.x
+                                &&H.y===
+                                 f.y){c++
+                                  ;f={x:
+                                   Math.
+                                  floor(
+                                 Math.
+                               random()
+                             *w),y:
+                           Math.
+                        floor(
+                      Math.
+                    random(
+                  )*h)};
+                }else{s
+              .pop();}
+             }let O=
+             'SCORE:'
+             +c+'\n';
+              for(let
+                Y=-1;Y
+                  <=h;Y++)
+                    {for(let
+                      X=-1;X<=
+                        w;X++){
+                           if(Y<0
+                              ||Y==h
+                                ||X<0||
+                                  X==w)O
+                                   +='#';
+                                    else if
+                                     (X===f.
+                                    x&&Y===
+                                   f.y)O+=
+                                 '@';else
+                              if(s.some
+                           (z=>z.x
+                        ===X&&z
+                      .y===Y)
+                    )O+='O'
+                  ;else O
+                +=' ';}
+              O+='\n'
+             ;}
+             document
+             .getElementById
+              ('g').
+                innerText
+                  =O;},
+                    150);
+                      document
+                        .onkeydown
+                           =(e)=>{
+                              let k=
+                                e.key;
+                                  if(k===
+                                   'ArrowUp'
+                                    &&d.y===
+                                     0)d={x:
+                                    0,y:-1}
+                                   ;if(k===
+                                 'ArrowDown'
+                              &&d.y===
+                           0)d={x:
+                        0,y:1};
+                      if(k===
+                    'ArrowLeft'
+                  &&d.x===
+                0)d={x:
+              -1,y:0}
+             ;if(k===
+             'ArrowRight'
+             &&d.x
+              ===0)d
+                ={x:1,
+                  y:0};};
+                    let
+                      tx=0,
+                        ty=0;
+                          document
+                             .ontouchstart
+                                =(e)=>{
+                                  tx=e.
+                                   touches
+                                    [0].
+                                     clientX
+                                    ;ty=e
+                                   .touches
+                                 [0].
+                              clientY
+                           ;};
+                        document
+                      .ontouchend
+                    =(e)=>{
+                  let X=e
+                .changedTouches
+              [0].clientX
+             -tx,Y=e.
+             changedTouches
+             [0].clientY
+              -ty;if(
+                Math.abs
+                  (X)>Math
+                    .abs(Y)
+                      ){if(X>
+                        0&&d.x
+                           ===0)d=
+                              {x:1,y:
+                                0};else
+                                  if(X<0
+                                   &&d.x
+                                    ===0)
+                                     d={x:
+                                    -1,y:
+                                   0};}
+                                 else{
+                              if(Y>0
+                           &&d.y===
+                        0)d={x:
+                      0,y:1};
+                    else if
+                  (Y<0&&d
+                .y===0)
+              d={x:0,
+             y:-1}
+             ;}};
+             /*
+              ( )
+               ( )
+                ^
+                 */
+    </script>
+</body>
+</html>
