@@ -33,3 +33,7 @@ A classic Snake game recreated entirely with ASCII art — including the game it
 The idea was inspired by projects where the source code itself is arranged as visual art.
 
 Instead of only making the game look like ASCII art, I wanted the **code itself to become part of the artwork**.
+
+## 📜 License
+
+This project is open source and available under the MIT License.
